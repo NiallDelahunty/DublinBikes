@@ -1,0 +1,234 @@
+{% extends "layout.html" %} {% block content %}
+<!-- <body style="background-color: rgb(8,76,85);"> -->
+
+  <!-- Heading section -->
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Dublin Bikes Information</h1>
+    <p class="lead" style="color: lightgray;">Just Eat dublinbikes is a self-service bike rental system open to everyone from 14 years of age. It enables you to travel through the city centre, commute between home and work and get out and about to enjoy Dublin city at your leisure.</p>
+  </div>
+</section>
+
+<div class="bkground" style="background-color: rgb(8,76,85);">
+<!-- Container for all rows-->
+<div class="container" style="background-color: rgb(8,76,85);">
+  <!-- First row -->
+  <div class="row aboutPage">
+
+    <!--------------- First card - Services --------------->
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <!-- Heading -->
+        <h3 class="card-title">Service</h3>
+        <!-- Image -->
+        <img class="card-img-top"  src="static/Imgs/DB_Service.jpg" alt="Bikes" >
+        <div class="card-body">
+          <!-- Initial text -->
+          <p class="card-text"> Just Eat dublinbikes stations are distributed throughout the city centre to enable easy access and optimal use.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- More information button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"  onclick="more_info('1')" style="background-color: rgb(8,76,85);"><span id="text1">More information  </span><span id="icon1" class="glyphicon glyphicon-chevron-down"></span> </button>
+            </div>
+            <small class="text-muted">Service</small>
+          </div>
+          <!-- Extra infromation section -->
+          <div class="d-none extra1">
+            <p>All stations are equipped for Annual Card and 3 Day Ticket users. A number of credit card enabled terminals allow you to purchase a 3 Day Ticket. Once purchased, you can use the 3 Day Ticket similar to the Annual Card to rent or return a bike from any station in the network. Just Eat dublinbikes can also be accessed by using an associated Leap Card.</p>
+            <p>You can enjoy the many benefits of an Annual Card for just €25. A 3 Day Ticket costs €5. The first 30 minutes of use is free on every bike.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-------- Second card - Bikes -------------->
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+         <!-- Heading -->
+        <h3 class="card-title">Bikes</h3>
+        <!-- Image -->
+        <img class="card-img-top"  src="static/Imgs/DB_Bikes.jpg" alt="Bikes"  >
+        <div class="card-body">
+          <!-- Initial text -->
+          <p class="card-text">Just Eat dublinbikes have been uniquely designed for Dublin city, designed for optimal comfort and safety.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- More information button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"  onclick="more_info('2')" style="background-color: rgb(8,76,85);"><span id="text2">More information  </span><span id="icon2" class="glyphicon glyphicon-chevron-down"></span> </button>
+            </div>
+            <small class="text-muted">Bikes</small>
+          </div>
+          <!-- Extra information section -->
+          <div class="d-none extra2">
+            <h4>Comfort</h4>
+            <ul class="list-unstyled">
+                <li>- Unisex bikes suitable for all, 14 years and up</li>
+                <li>- Simple and quick three gear change</li>
+                <li>- Adjustable cushioned saddle</li>
+                <li>- Large capacity durable front basket</li>
+                <li>- Non-slip handlebars</li>
+                <li>- Anti-splash front and rear mud guardss</li>
+            </ul>
+            <h4>Safety</h4>
+            <ul class="list-unstyled">
+                <li>- Automatic rear and front lights, operating day and night</li>
+                <li>- Reflective strips on wheels and pedals</li>
+                <li>- Front and rear brakes integrated in wheel hubs</li>
+                <li>- Chain guard</li>
+                <li>- Anti Theft Lock</li>
+                <li>- Finger touch bell</li>
+            </ul>  
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!------------ Second row -------------->
+  <div class="row aboutPage">
+   
+    
+    <!----------- Third card - Station Terminal --------------->
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <!-- Heading -->
+        <h3 class="card-title">Station Terminal</h3>
+        <!-- Image -->
+        <img class="card-img-top"  src="static/Imgs/DB_Station.png" alt="Bikes" >
+        <div class="card-body">
+          <!-- Initial text -->
+          <p class="card-text"> There is a terminal at every station. All terminals accept an Annual Card, an associated Leap Card or a 3 Day Ticket.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- More information button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"  onclick="more_info('3')" style="background-color: rgb(8,76,85);"><span id="text3">More information  </span><span id="icon3" class="glyphicon glyphicon-chevron-down"></span> </button>
+            </div>
+            <small class="text-muted">Station Terminal</small>
+          </div>
+           <!-- Extra information section -->
+          <div class="d-none extra3">
+            <p>Terminals at all stations allow you to:</p>
+            <ul class="list-unstyled">
+              <li>- select a bike</li>
+              <li>- consult your account</li>
+              <li>- view availability of bikes and stands at other stations</li>
+              <li>- check the station map</li>
+              <li>- Locate a credit card enabled terminal</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--------------- Fourth card - Stands ----------------->
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <!-- Heading -->
+        <h3 class="card-title">Stands</h3>
+        <!-- Image -->
+        <img class="card-img-top"  src="static/Imgs/DB_Stand.png" alt="Bikes" >
+        <div class="card-body">
+          <!-- Initial text -->
+          <p class="card-text">The stands are used to secure bikes by means of a locking system specifically designed for the service.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- More information button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"  onclick="more_info('4')" style="background-color: rgb(8,76,85);"><span id="text4">More information  </span><span id="icon4" class="glyphicon glyphicon-chevron-down"></span> </button>
+            </div>
+            <small class="text-muted">Stands</small>
+          </div>
+          <!-- Extra information section -->
+          <div class="d-none extra4">
+            <p>When you return your bike, an audio signal of 2 beeps and green indicator light will confirm when you have successfully locked the bike into the stand. In the event of a problem, contact the Call Centre on 1850 777 070.</p>
+            <p>Stations open: 05:00am - 00:30am</p>
+            <p>Return a bike: 24hrs</p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!------ third row ---------->
+  <div class="row aboutPage">
+
+
+    <!--------- Fifth card - Hiring ----------->
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <!-- Heading -->
+        <h3 class="card-title">Hiring</h3>
+        <!-- Image -->
+        <img class="card-img-top"  src="static/Imgs/DB_Hiring.png" alt="Bikes" >
+        <div class="card-body">
+          <!-- Initial text -->
+          <p class="card-text"> Just Eat dublinbikes can be hired between 05:00am - 00:30am. </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- More information button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"   onclick="more_info('5')" style="background-color: rgb(8,76,85);"><span id="text5">More information  </span><span id="icon5" class="glyphicon glyphicon-chevron-down"></span> </button>
+            </div>
+            <small class="text-muted">Hiring</small>
+          </div>
+          <!-- Extra information section -->
+          <div class="d-none extra5">
+            <p>Log in at the terminal using your Just Eat dublinbikes Annual Card, associated Leap Card or your 3 Day Ticket.
+              Enter your PIN and select an available bike on screen, you then have 60 seconds to press the unlocking button on the stand of the bike you have chosen. Once you have pressed the button you have 5 seconds to remove the bike from the stand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------- Sixth card- Returning ----------->
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <!-- Heading -->
+        <h3 class="card-title">Returning</h3>
+        <!-- Image -->
+        <img class="card-img-top"  src="static/Imgs/DB_Returning.png" alt="Bikes" >
+        <div class="card-body">
+          <!-- Initial text -->
+          <p class="card-text">Just Eat dublinbikes can be returned 24hrs at any station with a free stands.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- More information button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"  onclick="more_info('6')" style="background-color: rgb(8,76,85);"><span id="text6">More information  </span><span id="icon6" class="glyphicon glyphicon-chevron-down"></span> </button>
+            </div>
+            <small class="text-muted">Returning</small>
+          </div>
+          <!-- Extra information section -->
+          <div class="d-none extra6">
+            <p>When you have completed your journey simply locate the nearest station with available stands. An audio signal of 2 beeps and a green indicator light on the stand confirm that the bike is locked correctly and your usage is complete. If there are no available stands at the station, use the terminal to locate a nearby station with availability and Just Eat dublinbikes will give you 15 minutes free of charge to get there.</p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  function more_info(val){
+    // Changes text and icon on about page buttons
+    var check = document.getElementById("text" + val).innerHTML;
+    if (check == "More information  "){
+      document.getElementById("text" + val).innerHTML= "Less information";
+      var classes = document.getElementById("icon" + val).className;
+      document.getElementById("icon" + val).className= "glyphicon glyphicon-chevron-up";
+      $('.extra' + val).toggleClass('d-none');
+    } 
+    else{
+      document.getElementById("text" + val).innerHTML= "More information";
+      document.getElementById("icon" + val).className= "glyphicon glyphicon-chevron-down";
+      $('.extra' + val).toggleClass('d-none');
+    }
+    
+  }
+</script>
+
+
+</div>
+</div>
+{% endblock content %}

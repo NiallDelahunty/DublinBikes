@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Title bar -->
+<body style="background-color: rgb(8,76,85)">
+    <div class="loginHeader">
+        Account Information
+    </div>
+    <!-- Container for page body -->
+    <div class="info_container">
+        <!-- column left and column right defining a two column layout for the page -->
+        <div class="row">
+            <!-- User's account information display -->
+            <div class="column left" style="padding-top: 10px">
+                <div class="content-section" style="margin-bottom: 10px"> <!--Required so login and register forms can be sized correctly-->
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">User Information</legend>
+                            <div class="form-group">
+                                {{ form.email.label(class="form-control-label") }}
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                        <!-- Update button -->
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info", style="background-color: rgb(8, 76, 85); color: white") }}
+                        </div>
+                    </form>
+                </div>
+                <!-- User's leapcard information -->
+                <div class="content-section" style="margin-bottom: 10px"> <!--Required so login and register forms can be sized correctly-->
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Leapcard Information</legend>
+                            <div class="form-group">
+                                {{ form.leapcard_name.label(class="form-control-label") }}
+                                {% if form.leapcard_name.errors %}
+                                    {{ form.leapcard_name(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.leapcard_name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.leapcard_name(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.leapcard_card_number.label(class="form-control-label") }}
+                                {% if form.leapcard_card_number.errors %}
+                                    {{ form.leapcard_card_number(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.leapcard_card_number.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.leapcard_card_number(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                        <!-- Update button -->
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info", style="background-color: rgb(8, 76, 85); color: white") }}
+                        </div>
+                    </form>
+                </div>
+                <!-- User's Dublin Bikes card information -->
+                <div class="content-section" style="margin-bottom: 10px"> <!--Required so login and register forms can be sized correctly-->
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Dublin Bikes Card Information</legend>
+                            <div class="form-group">
+                                {{ form.db_name.label(class="form-control-label") }}
+                                {% if form.db_name.errors %}
+                                    {{ form.db_name(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.db_name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.db_name(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form.db_card_number.label(class="form-control-label") }}
+                                {% if form.db_card_number.errors %}
+                                    {{ form.db_card_number(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.db_card_number.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.db_card_number(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                        <!-- Update button -->
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info", style="background-color: rgb(8, 76, 85); color: white") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Favourite Stations display -->
+            <div class="column right" style="padding-top: 10px">
+                <div class="content-section">
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Favourite Stations</legend>
+                            <h4>You currently have no favourite stations</h4>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

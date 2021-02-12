@@ -1,0 +1,183 @@
+{% extends "layout.html" %} {% block content %}
+<body>
+<!-- Screen splash -->
+<div class="loader">
+    <img src="/static/Imgs/DB-logo.png" alt="loading..." style="width:100px;height:80px;"/>
+    <div class="loading"></div>
+</div>
+      
+<div class="map_container">
+        <div class="wrapper">
+        <!-- --------Side-Bar Column--------- -->
+        <div id="left_column" class="temp">
+            <!-- First card/section of sidebar (weather) -->
+            <div class="card_map" id="weatherContainer" style="height: 90px;overflow-y: hidden;">
+                <button  type="button" class="btn close" onclick="close_sidebar()" style="color: white;" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                    <div id="weatherCard">
+                        <div>
+                            <img id="weatherIcon" src="" alt="" style="height: 90px; width: 100px"> 
+                        </div>
+                        <div>
+                            <span id="description"></span>
+                        </div>
+                        <div>
+                            <div id="temp"></div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Second card/section of sidebar (Station info) -->
+            <div class="card_map" , id="predictions" style="display: none;">
+                <div class="cardTitle" id="station" >Station</div>
+                <div class="subtitle">Current Availability</div>
+                <div id="current_info"></div>
+                <div class="subtitle">Predicted Availabilty (By Day)</div>
+            </div>
+            
+            <!-- Histogram -->
+            <div class="card_map" , id="hists" style="display: none;">
+                <button id="prevDay" class="btn btn-primary btn-sm" style="background-color: rgb(8,76,85);"><strong><</strong></button>
+                <span id="weekday"></span>
+                <button id="nextDay" class="btn btn-primary btn-sm" style="background-color: rgb(8,76,85);"><strong>></strong></button>
+                <div id="hist"></div>
+            </div>
+            <!-- Predict Specific time -->
+            <h4 style="text-align: center;">Enter a specifc time:</h4>
+            <div id="Date_Entry">
+                <select class="form-control" id="datePicker">
+                </select>
+                <input id="timePicker">
+                <button type="button" class="btn btn-success" id='pred_button' style="background-color: rgb(8,76,85);">Go <span class="glyphicon glyphicon-signal"></span> </button>
+            </div>
+            <!-- Predicted occupancy info of Selected time/date -->
+            <div id='result'></div>
+
+            <!-- Directions -->
+            <div class="card_map", id="directions", style="display: none;">
+                <div class="cardTitle">Directions</div>
+                <div id="Directions_entry">
+                    <input type="text" id="dir_input" placeholder="Whereabout?">
+                    <button type="button" class="btn btn-success" id="dir_button" style="background-color: rgb(8,76,85);"><i class="fas fa-directions"></i></button>
+                </div>
+            </div>
+            <div class="card_map", id="trip", style="display: none;">
+                <button type="button" class="close" aria-label="Close" id="close_trip">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="cardTitle">Directions</div>
+                <!-- timeline -->
+                <div id="totaltrip"></div>
+                <div id="contain">
+                    <div class="before">
+                        <span id="dot1">1</span>
+                    </div>
+                      <div id="cycle">
+                          <div class="icon">
+                            <i class="fas fa-bicycle" style="color: #00008b;"></i>
+                          </div>
+                          <div class="Timing">
+                              <p id="bicyclingtrip"></p>
+                          </div>
+                      </div>
+                      <div class="before">
+                        <span id="dot2">2</span>
+                    </div>
+                      <div id="walk">
+                          <div class="icon">
+                            <i class="fas fa-shoe-prints" style="color: #e43e34;"></i>
+                          </div>
+                          <div class="Timing">
+                              <p id="walkingtrip"></p>
+                          </div>
+                      </div>
+                      <div class="before">
+                        <span id="dot3">3</span>
+                    </div>
+                </div>
+                <div>
+                    <ol>
+                        <li id="start">Start</li>
+                        <li id="dropoff">Dropoff station</li>
+                        <li id="dest">Destination</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- -------Map column------------ -->
+        <div id="right_column">
+                <!-- Search Bar container-->
+                <div class="container">
+                    <div class="d-flex justify-content-center">
+                        <!-- z-index - how it is positioned in the stack, higher = more to the front - is to overlay bar on map -->
+                    <div class="search_bar" style="position: absolute; left:10px; top:10px; z-index:98;">
+                        <!-- Enter info into search bar will filter station options -->
+                        <input class="search_input" autocomplete="off" id="myInput" type="text" onkeyup="searchName()" placeholder="Search station..."><span class="search_icon"><i class="fas fa-search"></i></span> 
+                        <!-- Div for the search results displayed below the search box -->
+                        <div class="card_map" , id="search_results" , style="height: 130px;overflow-y: scroll; display: none;">
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+            <!-- container for map -->
+            <div class="container_2">       
+                <div id="map">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div id="key">{{ key }}</div>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.2.620/styles/kendo.bootstrap-v4.min.css">
+    <script src="https://kendo.cdn.telerik.com/2018.2.620/js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <!-- Link to relevant Javascript files -->
+    <script src="static/markerclustererplus.min.js"></script>
+    <script src="static/javascript.js"></script>
+    <!--Script below requests data from API and performs a callback to the function initMap()-->
+    <script async defer
+        src={{ request }}></script>
+</body>
+
+<script>
+     // For search bar how to control what happens when you hover then go off search bar
+     $(document).ready(function(){
+            $(".search_bar").hover(function(){
+                $(".search_input").css({"width":"300px","transition": "width 0.4s linear"});
+                }, function(){
+                    $(".search_input").css({"width":"0px","transition": "width 0.4s linear"});
+                    $("#search_results").css("display","none");
+            });
+            });
+
+    $(document).ready(function () {
+        $('#pred_button').click(function () {
+            document.getElementById("result").style.display = "";
+            var station = $('#station').html();
+            var date = $('#datePicker').val();
+            var time = $('#timePicker').val();
+            $.ajax({
+                url: "/get_pred",
+                type: "get",
+                data: {
+                    date: date,
+                    time: time,
+                    station: station
+                },
+                success: function (response) {
+                    $("#result").html(response.html);
+                },
+                error: function (xhr) {
+                    //Do Something to handle error
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock content %}
+

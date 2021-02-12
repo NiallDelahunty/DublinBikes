@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <!-- templating structure modified from https://www.youtube.com/watch?v=QnDWIZuWYW0&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=2 -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <!-- Meta tag makes it responsive as bootstrap is mobile first, width - sets it to the device size -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dublin Bikes</title>
+
+    <!-- Need to get bootstrap -->
+    <!-- Bootstrap for css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <!-- Bootstrap for JQuery, Javascript and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Chango' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bowlby One' rel='stylesheet'>
+
+    <!-- For ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- Plain CSS file -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <!-- Search Icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Jquery Cookies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+
+   
+    {% if title %}
+    <title>Dublin Bikes - {{title}}</title>
+    {% else %}
+    <title>Dublin Bikes</title>
+    {% endif %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+                <!-- Dublin Bikes Logo -->
+                <img id="logo" src="static/Imgs/DB-logo.png">
+                <!-- Dublin Bikes heading -->
+                <a class="navbar-brand mr-4"  href="/"> Dublin Bikes</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                <!-- When screen is reduced in size the headings collapse into a button -->
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                <!-- Nav-Bar links (left)-->
+                    <div class="navbar-nav">    
+                        <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+                    </div>
+                    <!--  Nav-Bar links (right) -->
+                    <div class="navbar-nav nav-right">
+                        {% if current_user.is_authenticated %}
+                            <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+                            <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        {% else %}
+                            <a class="nav-item nav-link" href="{{ url_for('login') }}">Login <span class="glyphicon glyphicon-log-in"></span></a>
+                            <a class="nav-item nav-link" href="{{ url_for('register') }}">Register <span class="glyphicon glyphicon-pencil"></span></a>
+                        {% endif %}
+                    </div>
+                </div>
+        </nav>
+    
+    <!-- html content -->
+    {% block content %}{% endblock %}
+
+<script>
+
+</script>
+
+</body>
+
+</html>

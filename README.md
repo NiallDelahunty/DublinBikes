@@ -1,5 +1,3 @@
-REPOSITORY IS CURRENTLY ON PRIVATE DUE TO ASSIGNMENT GUIDELINES, A DEMO CAN BE PROVIDED ON REQUEST
-
 # Dublin Bikes
 
 Contributors:
@@ -23,5 +21,5 @@ Extra features that are included are:
 This web app was designed to collect dynamic data from the JCDecaux API about Dublin City Bikes usage on a daily basis. The data collection was processed on an Amazon Web Service instance, EC2, and the data was saved to a RDS MySQL database.
 
 <p align="center">
-  <img src="github-DB_architecture.png" alt="architecture">
+  <img src="documentation/architecture.PNG" alt="architecture">
 </p>

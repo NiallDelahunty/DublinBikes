@@ -1,0 +1,509 @@
+/* --- CSS Order --- 
+1. splash screen
+2. navigation bar
+3. home.html
+  3.1 sidebar
+    3.1.1 weather
+    3.1.2 histogram
+    3.1.3 bike prediction
+    3.1.4 directions
+    3.1.5 timeline
+  3.2 Map
+4. about.hmtl
+5. login/register/account.html
+---------------------------
+*/
+
+/* Hide API key */
+#key{
+  display:none;
+}
+
+
+/* ---------------- Screen splash --------------------------------------  */
+/* taken from http://youtube.com/watch?v=xuA83OYTE7I */
+
+/* Background */
+.loader {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(8,76,85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* DB logo */
+.loader > img {
+  width: 100px;
+}
+
+.loader.hidden {
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+/* Splash screen fade out */
+@keyframes fadeOut {
+  100% {
+      opacity: 0;
+      visibility: hidden;
+  }
+}
+/* Loading circle */
+/* Taken from -- https://www.w3schools.com/howto/howto_css_loader.asp */
+.loading {
+  border: 8px solid #f3f3f3; /* white */
+  border-top: 8px solid darkgray; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* ---------------- ./Screen splash --------------------------------------  */
+
+/* ---------------- Navigation Bar --------------------------------------  */
+.bg-steel {
+  background-color: rgb(8,76,85);
+}
+/* DB logo */
+#logo{
+  width: 100px;
+  height: 70px;
+}
+  /* Navbar_container */
+.navbar{
+  margin-bottom: 0;
+  border-radius: 0px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 700px;
+}
+.navbar-nav{
+  margin: 0px;
+}
+/* Navbar links */
+.nav-item{
+  font-size: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* 'Dublin Bikes' */
+.navbar-brand{
+  font-size: 40px;
+}
+.nav-right{
+  float: right;
+}
+/* When screen reaches 900px the login/register links will no longer float */
+@media only screen and (max-width: 900px) {
+  .nav-right {
+      float: none;
+  }
+}
+
+/* ---------------- ./Navigation Bar --------------------------------------  */
+
+
+/* ---------------- home.html --------------------------------------------------------------------------------------------- */
+
+/* Wrapper around all body page content */
+.wrapper{
+  display: flex;
+  align-items: stretch;
+  height:100%;
+}
+/* Container for left and right_column */
+.map_container{
+  height: 100%;
+}
+
+/*------------------------- Sidebar ------------------------------------------------------*/
+#left_column{
+  margin-left: -350px;
+  min-width: 350px;
+  max-width: 350px;
+  min-height: 90vh;
+  transition: all 0.3s;
+  border: 1px solid black;
+}
+
+/* Upon clicking a station/search option, left_column gets the class 'active' added */
+#left_column.active {
+  margin-left: 0;
+}
+
+/* Titles above each sidebar section */
+.cardTitle{
+  background-color: rgb(8,76,85);
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  height:35px;
+}
+
+/* Div for each sidebar section */
+.card_map {
+  background-color: white;
+  transition: transform .2s;
+}
+
+/* sidebar subtitle */
+.subtitle{
+  border-top: solid rgb(8,76,85) 1px;
+  border-bottom: solid rgb(8,76,85) 1px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+/* --------------Weather ---------------*/
+/* Div for current weather (all elements - top of sidebar) */
+#weatherContainer{
+  background-color: rgb(8,76,85);
+  color: white;
+}
+/* Div containing weather description, icon and temperature */
+#weatherCard{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 20px;
+  font-size: 20px;
+}
+/* Weather icon */
+#weatherIcon{
+  height: 70px;
+  width: 80px;
+}
+/* ----------./weather--------------- */
+
+/*--------------- Histogram------------------ */
+
+/* Station name div (takes name from marker clicked) */
+#station{
+  overflow:hidden;
+}
+/* Histogram and bike availability sections (in sidebar) */
+#hists, #predictions{
+  text-align: center;
+}
+
+/* Prediction histograms */
+#hists span, #directions input, #directions button {
+  display: inline-block;
+}
+/* Div showing day of the week for current histogram displayed */
+#weekday{
+  width: 100px;
+}
+/*--------------- ./Histogram------------------ */
+
+/* ------Bike prediction--------------- */
+/* Div for bike availability prediction */
+#Date_Entry{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+/* Date selector for bike availability prediction */
+#datePicker{
+  width:40%;
+}
+/* Time selector for bike availability prediction */
+#timePicker{
+  width: 30%;
+  font-size: 15px;
+}
+#standinfo{
+  display:flex;
+  justify-content: space-evenly;
+}
+/* ------./ Bike prediction--------------- */
+
+/* ---------------Directions----------------- */
+/* Directions input div */
+#Directions_entry{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+/* directions input box */
+#dir_input{
+  width:60%;
+}
+/* ---------------./Directions----------------- */
+
+/* --- Timeline(sidebar) --------- */
+#contain{
+  display: flex;
+  justify-content:center;
+  align-content:center;
+}
+/* Total journey time displayed above the timeline */
+#totaltrip{
+  display:flex;
+  justify-content:center;
+}
+
+/* Cycle and walk information divs (LHS and RHS of timeline) */
+#cycle,#walk{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width:30%;
+}
+
+/* Timing is the bottom half of each timeline div, icon is the top half (in a [flex direction: column] div) */
+.Timing,.icon{
+  display: flex;
+  justify-content:center;
+  align-content: flex-end;
+}
+/*  Bike and footprint icon divs */
+.icon{
+  margin-bottom: 5px;
+}
+/* Bike and footprint icons */
+i{
+  font-size: 20px;
+  display:flex;
+  align-items: center;
+}
+/* Journey time div */
+#cycle .Timing{
+  border-top:solid #00008b 3px;
+}
+#walk .Timing{
+  border-top:solid #e43e34 3px;
+}
+/* Div for the numbered circles */
+.before{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content:center;
+}
+/* The numbered circles */
+#dot1,#dot2,#dot3 {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+}
+#dot1{
+  background-color: #00008b;
+}
+#dot2{
+  background: linear-gradient(90deg, #00008b 50%, #e43e34 50%);
+}
+#dot3{
+  background-color: #e43e34;
+}
+/*-----./timeline ------- */
+
+/* Close button on sidebar */
+.close{
+  color:white;
+}
+/* ----- ./ sidebar -------------------------------------------------------------*/
+
+
+/* -------Map------------------------------------------------------------------ */
+/* Map section div */
+#right_column{
+  border: 1px solid black;
+  flex-grow: 1;
+  min-width: 350px;
+  position: relative;
+}
+/* Map div*/
+#map {
+  height:100%;
+  background-color: gray;
+
+}
+.container_2{
+  height:100%;
+}
+/* --------Seach bar - copied from: https://bootsnipp.com/snippets/GaeQR */
+.search_bar{
+  margin-bottom: 0;
+  margin-top: 0;
+  height: 40px;
+  min-width: 30px;
+  background-color: white;
+  }
+
+/* Search box (input) div */
+.search_input{
+  color: black;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  background-color: white;
+}
+
+/* search Input box */
+#myInput{
+  margin-left:-2px;
+}
+/* Div for the search results displayed below the search box  */
+#search_results{
+  margin:0;
+}
+#search_results div{
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #d4d4d4;
+  
+}
+  /*when hovering on a search suggestion*/
+#search_results div:hover {
+  background-color: #9b9b9b;
+}
+
+/* Search bar icon */
+.search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgb(8,76,85);
+  text-decoration:none;
+  margin-left: -2px;
+  }
+/* ------./Search bar--------------- */
+
+/* Clustering map markers */
+.custom-clustericon {
+  color: rgb(255,255,255);
+  font-weight: 900;
+  font-family: 'Bowlby One';
+  font-size: 16px;
+}
+/* Station Popup Window */
+.popup_title{
+  color: rgb(8,76,85);
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+  height:20px;
+}
+/* -------./ Map--------------------------------------------------------------- */
+
+/* ------------------./home.html --------------------------------------------------------------------------------------------------- */
+
+
+
+/* ---------------- About.html -----------------------------------------------------------------------------------------------------  */
+
+/* Dublin bikes information heading */
+.jumbotron{
+  color: white;
+  background-color: rgb(8,76,85);
+  margin-bottom:0px;
+  padding: 10px;
+  border-top: solid darkgray 1px;
+  border-bottom: solid darkgray 1px;
+}
+/* Information cards container */
+.aboutPage{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-top: 20px;;
+}
+/* Information card */
+.card-title{
+  text-align: center;
+  background-color: rgb(8,76,85);
+  color: white;
+  margin:0px;
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+/* Divs revealed when 'more info' button is clicked (1 for each card) */
+.extra1,.extra2,.extra3,.extra4,.extra5,.extra6{
+  margin-top: 10px;
+}
+/* ---------------- ./About.html --------------------------------------------------------------------------------------------------  */
+
+
+/* ----------------login/register/account.html-------------------------------------------------------------------------------------- */
+/* Styling for Personal Information Area */
+.info_container {
+  width: 940px;
+  margin: 0 auto;
+}
+/* Page title */
+.loginHeader{
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  border-top: solid darkgray 1px;
+  border-bottom: solid darkgray 1px;
+}
+/* Login/register/account page container */
+.loginContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.media-body {
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 10px;
+}
+
+/* Form container */
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: auto;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+/* ---------- Account.html columns -------- */
+.column {
+  float: left;
+}
+
+.left {
+  width: 60%;
+}
+
+.right {
+  width: 40%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* -------- ./Account.html columns ---------- */
+
+/* ----------------./login/register/account.html-------------------------------------------------------------------------------------- */

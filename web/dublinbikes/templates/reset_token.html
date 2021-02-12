@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Title bar -->
+<body style="background-color: rgb(8,76,85);">
+<div class="loginHeader">
+    Reset Password
+</div>
+<!-- Container for page contents -->
+<div class="loginContainer">
+    <div class="content-section" style="width: 650px; margin-top: 10px">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <!-- New password input field -->
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <!-- New confirm password input field -->
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label") }}
+                    
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <!-- Submit button -->
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info", style="background-color: rgb(8,76,85); color: white") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
